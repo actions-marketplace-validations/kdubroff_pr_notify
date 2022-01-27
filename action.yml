@@ -1,6 +1,5 @@
 name: Create PR and Notify
 description: Create PR from sourceBranch to featureBranch
-
 inputs:
   serverAddress:
     description: "the email server's address"
@@ -32,15 +31,17 @@ inputs:
     description: 'sourceBranch: the branch being merged into featureBranch'
     type: string
     required: true
-    default: 'develop'
-   
+    default: 'develop'   
 
 runs:
   using: "composite"
-  steps:        
+  steps:  
+    - id: debug
+      shell: bash
+      run: echo ${{ (github.event.inputs || inputs) }}
+      
     # TODO: start PR from ${{ (github.event.inputs || inputs).featureBranch }} to ${{ (github.event.inputs || inputs).featureBranch }} if any conflicts
     - id: startPRAndNotification
-
     # send an email notifying of the failure
       uses: dawidd6/action-send-mail@v3
       with:
@@ -61,13 +62,6 @@ runs:
         # TODO: get actual URL from PR action
         body: | 
           <p>
-             Merge failed when attempting to merge ${{ (github.event.inputs || inputs).sourceBranch }} into ${{ (github.event.inputs || inputs).featureBranch }}.
-             PR Created, <<a href="PR URL FROM PR STEP HERE">view on GitHub</a>
-          </p>
-        
-    - id: debug
-      shell: bash
-      run: echo <p>
              Merge failed when attempting to merge ${{ (github.event.inputs || inputs).sourceBranch }} into ${{ (github.event.inputs || inputs).featureBranch }}.
              PR Created, <<a href="PR URL FROM PR STEP HERE">view on GitHub</a>
           </p>
