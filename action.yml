@@ -58,7 +58,7 @@ runs:
         to: ${{ (github.event.inputs || inputs).toEmailAddress }}
         # Required sender full name (address can be skipped):
         from: ${{ (github.event.inputs || inputs).gitHubUsername }}
-        # TODO: get actual key from PR action
+        # TODO: get actual URL from PR action
         body: | 
           <p>
              Merge failed when attempting to merge ${{ (github.event.inputs || inputs).sourceBranch }} into ${{ (github.event.inputs || inputs).featureBranch }}.
