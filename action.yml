@@ -15,9 +15,9 @@ inputs:
     required: true
     default: '465'
   emailAddress:
-      description: 'the email address used to login to your email server'
-      type: string
-      required: true
+    description: 'the email address used to login to your email server'
+    type: string
+    required: true
   emailPassword:
     description: 'password used to login to your email server'
     type: string
