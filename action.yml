@@ -1,1 +1,20 @@
-# TODO
+# TODO: initial setup
+
+inputs:
+  emailAddress:
+      description: 'the email address used to login to GitHub and send email notifications'
+      type: string
+      required: true
+  emailPassword:
+    description: 'password used to login to your email server'
+    type: string
+    required: true    
+  emailPort:
+    description: 'the port number used to login to your email server'
+    type: int
+    required: true
+    default: 465
+  toEmailAddress:
+    description: 'the email address a notification email will be sent to'
+    type: string
+    required: true
