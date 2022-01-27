@@ -26,6 +26,16 @@ inputs:
     description: 'the email address a notification email will be sent to'
     type: string
     required: true
+  featureBranch:
+    description: 'featureBranch: the branch being updated with sourceBranch'
+    type: string
+    required: true
+  sourceBranch:
+    description: 'sourceBranch: the branch being merged into featureBranch'
+    type: string
+    required: true
+    default: 'develop'
+   
 
 runs:
   using: "composite"
