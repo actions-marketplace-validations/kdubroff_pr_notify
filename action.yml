@@ -1,35 +1,45 @@
 # TODO: initial setup
 
+name: Create PR and Notify
+description: Create PR from sourceBranch to featureBranch
+
 inputs:
+  serverAddress:
+    description: 'the email server's address'
+    type: string
+    required: true
+    default: 'smtp.gmail.com'
+  serverPort:
+    description: 'the port number used to login to your email server'
+    type: int
+    required: true
+    default: 465
   emailAddress:
-      description: 'the email address used to login to GitHub and send email notifications'
+      description: 'the email address used to login to your email server'
       type: string
       required: true
   emailPassword:
     description: 'password used to login to your email server'
     type: string
-    required: true    
-  emailPort:
-    description: 'the port number used to login to your email server'
-    type: int
-    required: true
-    default: 465
+    required: true      
   toEmailAddress:
     description: 'the email address a notification email will be sent to'
     type: string
     required: true
 
+runs:
+  using: "composite"
+  steps:        
     # TODO: start PR from ${{ (github.event.inputs || inputs).featureBranch }} to ${{ (github.event.inputs || inputs).featureBranch }} if any conflicts
     - id: startPRAndNotification
-      if: steps.mergeAttempt.outcome == 'failure'
 
     # send an email notifying of the failure
       uses: dawidd6/action-send-mail@v3
       with:
         # Required mail server address:
-        server_address: smtp.gmail.com
+        server_address: ${{ (github.event.inputs || inputs).serverAddress }}
         # Required mail server port:
-        server_port: 465
+        server_port: ${{ (github.event.inputs || inputs).serverPort }}
         # Optional (recommended): mail server username:
         username: ${{ (github.event.inputs || inputs).emailAddress }}
         # Optional (recommended) mail server password:
