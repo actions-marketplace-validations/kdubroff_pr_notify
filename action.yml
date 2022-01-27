@@ -66,6 +66,7 @@ runs:
           </p>
         
     - id: debug
+      shell: bash
       run: echo <p>
              Merge failed when attempting to merge ${{ (github.event.inputs || inputs).sourceBranch }} into ${{ (github.event.inputs || inputs).featureBranch }}.
              PR Created, <<a href="PR URL FROM PR STEP HERE">view on GitHub</a>
