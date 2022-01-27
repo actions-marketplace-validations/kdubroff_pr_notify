@@ -13,7 +13,7 @@ inputs:
     description: 'the port number used to login to your email server'
     type: string
     required: true
-    default: 465
+    default: '465'
   emailAddress:
       description: 'the email address used to login to your email server'
       type: string
