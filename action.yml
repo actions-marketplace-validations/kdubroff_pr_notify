@@ -3,7 +3,7 @@ description: Create PR from sourceBranch to featureBranch
 
 inputs:
   serverAddress:
-    description: 'the email server's address'
+    description: "the email server's address"
     type: string
     required: true
     default: 'smtp.gmail.com'
