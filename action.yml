@@ -11,7 +11,7 @@ inputs:
     default: 'smtp.gmail.com'
   serverPort:
     description: 'the port number used to login to your email server'
-    type: int
+    type: string
     required: true
     default: 465
   emailAddress:
