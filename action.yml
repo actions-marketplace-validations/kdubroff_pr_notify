@@ -31,7 +31,12 @@ inputs:
     description: 'sourceBranch: the branch being merged into featureBranch'
     type: string
     required: true
-    default: 'develop'   
+    default: 'develop'
+  name:
+    description: 'the name that appears in the email's "from" field'
+    type: string
+    required: true
+    default: 'Auto Merge Triage'
 
 runs:
   using: "composite"
@@ -58,7 +63,7 @@ runs:
         # Required recipients' addresses:
         to: ${{ (github.event.inputs || inputs).toEmailAddress }}
         # Required sender full name (address can be skipped):
-        from: ${{ (github.event.inputs || inputs).gitHubUsername }}
+        from: ${{ (github.event.inputs || inputs).name }}
         # TODO: get actual URL from PR action
         body: | 
           <p>
