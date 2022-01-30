@@ -33,7 +33,7 @@ inputs:
     required: true
     default: 'develop'
   name:
-    description: 'the name that appears in the email\'s "from" field'
+    description: 'the name the email is from'
     type: string
     required: true
     default: 'Auto Merge Triage'
