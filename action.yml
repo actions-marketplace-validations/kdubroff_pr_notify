@@ -1,4 +1,4 @@
-name: Create PR and Notify
+name: Auto-Merge PR Notification
 description: Create PR from sourceBranch to featureBranch
 inputs:
   serverAddress:
