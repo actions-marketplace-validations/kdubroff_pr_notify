@@ -1,5 +1,5 @@
 name: Auto-Merge PR Notification
-description: Create PR from sourceBranch to featureBranch
+description: Send notification that PR was created from sourceBranch to featureBranch
 inputs:
   serverAddress:
     description: "the email server's address"
@@ -41,7 +41,7 @@ runs:
       run: echo ${{ (github.event.inputs || inputs) }}
       
     # TODO: start PR from ${{ (github.event.inputs || inputs).featureBranch }} to ${{ (github.event.inputs || inputs).featureBranch }} if any conflicts
-    - id: startPRAndNotification
+    - id: email_notification
     # send an email notifying of the failure
       uses: dawidd6/action-send-mail@v3
       with:
