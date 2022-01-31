@@ -37,6 +37,11 @@ inputs:
     type: string
     required: true
     default: 'Auto Merge Triage'
+   prURL:
+    description: 'the PR's URL'
+    type: string
+    required: true
+    default: 'https://github.com/NLSInc/Einstein-iOS/pulls'    
 
 runs:
   using: "composite"
@@ -45,7 +50,6 @@ runs:
       shell: bash
       run: echo ${{ (github.event.inputs || inputs) }}
       
-    # TODO: start PR from ${{ (github.event.inputs || inputs).featureBranch }} to ${{ (github.event.inputs || inputs).featureBranch }} if any conflicts
     - id: email_notification
     # send an email notifying of the failure
       uses: dawidd6/action-send-mail@v3
@@ -64,9 +68,8 @@ runs:
         to: ${{ (github.event.inputs || inputs).toEmailAddress }}
         # Required sender full name (address can be skipped):
         from: ${{ (github.event.inputs || inputs).name }}
-        # TODO: get actual URL from PR action
         body: | 
           <p>
              Merge failed when attempting to merge ${{ (github.event.inputs || inputs).sourceBranch }} into ${{ (github.event.inputs || inputs).featureBranch }}.
-             PR Created, <<a href="PR URL FROM PR STEP HERE">view on GitHub</a>
+             PR Created, <<a href="${{ (github.event.inputs || inputs).prURL }}">view on GitHub</a>
           </p>
