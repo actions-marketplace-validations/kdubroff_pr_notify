@@ -37,7 +37,7 @@ inputs:
     type: string
     required: true
     default: 'Auto Merge Triage'
-   prURL:
+  prURL:
     description: 'the PR's URL'
     type: string
     required: true
