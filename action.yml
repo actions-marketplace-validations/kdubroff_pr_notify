@@ -38,7 +38,7 @@ inputs:
     required: true
     default: 'Auto Merge Triage'
   prURL:
-    description: 'the PR's URL'
+    description: "the PR's URL"
     type: string
     required: true
     default: 'https://github.com/NLSInc/Einstein-iOS/pulls'    
