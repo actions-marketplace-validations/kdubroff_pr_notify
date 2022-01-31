@@ -2,6 +2,7 @@
 Create a PR and notify an email address or slack channel
 
 inputs:
+
 &nbsp;&nbsp;**serverAddress**:  
 &nbsp;&nbsp;&nbsp;&nbsp;description: "the email server's address"  
 &nbsp;&nbsp;&nbsp;&nbsp;type: string  
