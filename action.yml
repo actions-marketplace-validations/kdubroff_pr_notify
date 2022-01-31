@@ -71,5 +71,6 @@ runs:
         body: | 
           <p>
              Merge failed when attempting to merge ${{ (github.event.inputs || inputs).sourceBranch }} into ${{ (github.event.inputs || inputs).featureBranch }}.
-             PR Created, <<a href="${{ (github.event.inputs || inputs).prURL }}">view on GitHub</a>
+             <a href="${{ (github.event.inputs || inputs).prURL }}">View PR on GitHub</a>
+             <a href="${{ (github.event.inputs || inputs).prURL }}/conflicts">Any conflicts appear here</a>
           </p>
